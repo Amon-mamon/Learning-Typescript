@@ -515,4 +515,487 @@
 // console.log(`Checking balance: ${newCheckingAccount.getBalance()}`);
 
 
-// 
+// 4 PARTS OF OOP
+
+// ENCAPSULATION
+//1st exercise
+
+// class Employee {
+//     private _name:string
+//     private _salary:number
+//     private _performanceRating: number
+
+//     constructor(name:string,salary:number,performanceRating:number){
+//         this._name = name
+//         this._salary = salary
+
+//         if(performanceRating >= 1 && performanceRating <= 5){
+//                 this._performanceRating = performanceRating
+//         } else {
+//             this._performanceRating = 3
+//             console.log("Invalid initial performance")
+//         }
+//     }
+
+//     public getEmployeeInfo():string{
+//         return `${this._name}, Salary: ${this._salary}`
+//     }
+
+//     public updateSalary(newSalary:number){
+//         if(newSalary > this._salary){
+//             this._salary = newSalary
+//             console.log('salary updated')
+//         } else {
+//             console.log('Salary not updated')
+//         }
+//     }
+
+//     public setPerformanceRating(rating:number){
+//             if(rating >= 1 && rating <= 5 ){
+//                 this._performanceRating = rating
+//                 console.log('Rating')
+//             } else{
+//                     console.log('Error, cannot rate')
+//             }
+//     }
+
+//     getPerformanceRating():number{
+//         return this._performanceRating;
+//     }
+// }
+
+// const employee = new Employee('Vince',12000,1)
+// console.log(employee.getEmployeeInfo())
+
+// employee.updateSalary(52200)
+// console.log(employee.getEmployeeInfo())
+
+// employee.setPerformanceRating(6)
+// console.log(employee.getEmployeeInfo())
+
+// employee.setPerformanceRating(4)
+// console.log(`Final performance rating: ${employee.getPerformanceRating()}`)
+
+
+
+// 2nd exercise
+
+// class DigitalWallet {
+//     private _balance:number
+//     private _transactionHistory:string[]
+
+//     constructor(balance:number   ){
+//         this._balance = balance
+//         this._transactionHistory = []
+//     }
+
+//     public deposit(amount:number) : void{
+//         if(amount > 0){
+//             this._balance += amount
+//             const message = `Deposited:${amount}`
+//             this._transactionHistory.push(message)
+//             console.log(message)
+//         } else{
+//             console.log('Deposite must be positive amount')
+//         }
+//     }
+    
+//     public withdraw(amount:number) :boolean{
+//         if(amount > 0 && amount <= this._balance){
+//             this._balance -= amount
+//             const msg = `You withdraw: ${amount}`
+//             this._transactionHistory.push(msg)
+//             console.log(msg)
+//             return true
+//         }else{
+//             console.log('Insufficient balance')
+//             return false
+//         }
+//     }
+
+//     public transferTo(targetWallet:DigitalWallet,amount:number):void{
+//         if (this.withdraw(amount)){
+//             targetWallet.deposit(amount)
+//             const message = `Transferred ${amount} to another wallet`
+//             this._transactionHistory.push(message)
+//             console.log(message)
+//         }
+//     }
+
+//     public getBalance():number{
+//         return this._balance
+//     }
+
+//     public getTransactionHistory():string[]{
+//         return this._transactionHistory
+//     }
+// }
+
+// const amountDeposited = new DigitalWallet(1000,[])
+// console.log(amountDeposited.getBalance())
+// amountDeposited.deposit(500)
+// console.log(amountDeposited.getBalance())
+// amountDeposited.withdraw(300)
+// console.log(amountDeposited.getBalance())
+// amountDeposited.transferTo(amountDeposited,200)
+// console.log(amountDeposited.getTransactionHistory())
+
+
+// 3rd exercise
+
+
+// class StudentRecord {
+//     private _name:string
+//     private _grades:number[]
+//     constructor(name:string){
+//         this._name = name
+//         this._grades = []
+//     }
+
+//     public getStudentInfo():string{
+//         return `student name is ${this._name} and the student(s) grades are ${this._grades.join(',')}`
+//     }
+
+//     public addGrade(grade:number):void{
+//         if(grade > 0 && grade <= 100){
+//             this._grades.push(grade)
+//         } else {
+//             console.log('Invalid Grade')
+//         }
+//     }
+//     public calculateAverage(): number {
+//         if (this._grades.length === 0) {
+//             return 0; 
+//         }
+//         return this._grades.reduce((total, grade) => total + grade, 0) / this._grades.length;
+//     }
+//    public getGrades():number[]{
+//         return this._grades.slice()
+       
+//    }
+// }
+
+// const grades = new StudentRecord('Vince')
+// grades.addGrade(94)
+// grades.addGrade(94)
+// grades.addGrade(94)
+// grades.addGrade(94)
+// grades.addGrade(85)
+// grades.addGrade(94)
+// grades.addGrade(94)
+// console.log(`Average grade :${grades.calculateAverage()}`)
+// console.log(`Grades: ${grades.getGrades().join(",")}`)
+// console.log(grades.getStudentInfo())
+
+
+//4th exercise 
+
+// class LibrarySystem {
+//     private title:string
+//     private author:string
+//     private isCheckout:boolean
+//     constructor(title:string, author:string){
+//         this.title =  title
+//         this.author = author
+//         this.isCheckout = false
+//     }
+
+//     public getBookInfo():string{
+//         return `The title of the book is  ${this.title} and the author is ${this.author} Checkedout: ${this.isCheckout ? "yes" : "no"}`
+//     }
+
+//     public checkOut():void{
+//        if(!this.isCheckout){
+//         this.isCheckout = true
+//         console.log('The book has been checkout')
+//        } else {
+//         console.log('The book has already checkedout')
+//        }
+//     }
+//     public returnBook():void {
+//        if(!this.isCheckout){
+//         this.isCheckout = false
+//         console.log('The book was returned')
+//        } else {
+//         console.log('The book is not checked out.')
+//        }
+//     }
+// }
+
+// const libraryHistory = new LibrarySystem('Vince','John Doe')
+// libraryHistory.checkOut()
+// libraryHistory.returnBook()
+// console.log(libraryHistory.getBookInfo())
+
+// exercise 5
+
+// class EmployeePayrollSystem {
+//     private name:string
+//     private hoursWorked:number
+//     private hourlyRate:number
+
+//     constructor(name:string, hourlyRate:number){
+//             this.name = name
+//             this.hoursWorked = 0
+//             this.hourlyRate = hourlyRate
+//     }
+
+//     public logHours (hours:number){
+//         if(hours > 0){
+//             this.hoursWorked += hours
+//             console.log(`Added hour: ${hours}`)
+//         } else{
+//             console.log("No added hours")
+//         }
+//     }
+
+//     public calculatePay():number{
+//             return this.hoursWorked * this.hourlyRate
+//     }
+
+//     public getPayrollInfo():string{
+//         return `The employee name is ${this.name} and employee's total pay is ${this.calculatePay()}`
+//     }
+
+//     public resetHours(){
+//         this.hoursWorked = 0
+//     }
+// }
+
+// const employeeInfo = new EmployeePayrollSystem('Vince', 58)
+// employeeInfo.logHours(8)
+// employeeInfo.calculatePay()
+// console.log(employeeInfo.getPayrollInfo())
+
+
+// INHERITANCE 
+
+// 1st Exercise
+
+// class Vehicle {
+//     brand:string
+//     year:number
+
+//     constructor(brand:string, year:number){
+//         this.brand = brand
+//         this.year = year
+//     }
+    
+//      displayInfo():string{
+//         return `Brand ${this.brand}, Year : ${this.year}`
+//     }
+// }
+// class Car extends Vehicle {
+//         model:string
+//             constructor(brand:string, year:number, model:string){
+//                 super(brand,year)
+//                 this.model = model
+//             }
+            
+//         displayCarInfo():string{
+//             return `${this.displayInfo()} model: ${this.model}`
+//         }
+// }
+// class Truck extends Vehicle {
+//          capacity:number
+//         constructor(brand:string,year:number,capacity:number){
+//             super(brand,year)
+//             this.capacity = capacity
+//         }
+
+//          displayTruckInfo():string{
+//             return `Truck Capacity:${this.capacity} tons`
+//         }
+// }
+
+// const VehicleInfo = new Vehicle('Toyota',2024)
+// console.log(VehicleInfo.displayInfo())
+
+// const truck = new Truck('Land Crusier', 2025, 18)
+// console.log(truck.displayTruckInfo())
+// const car = new Car('Atoyot', 2012,'vios')
+// console.log(car.displayCarInfo())
+
+//2nd Exercise
+
+
+// class Person {
+//     name:string
+//     age:number
+//     constructor(name:string,age:number){
+//         this.name = name
+//         this.age = age
+//     }
+
+//     introduce():string{
+//         return `Hi, my name is ${this.name} and I am ${this.age} years old`
+//     }
+// }
+
+// class Teacher extends Person {
+//     subject:string
+//     constructor(name:string,age:number, subject:string){
+//         super(name,age)
+//         this.subject = subject
+//     }
+//     teach():string{
+//         return `${this.introduce()}I'm teaching ${this.subject}`
+//     }
+// }
+
+// class Student extends Person {
+//     grade:number
+//     constructor(name:string, age:number,grade:number){
+//         super(name,age)
+//         this.grade = grade
+//     }
+//     study():string{
+//         return `${this.introduce()} I'm studying  and currently in grade ${this.grade}`
+//     }
+// }
+
+// const person = new Person('Vince',24)
+// console.log(person.introduce())
+
+// const student = new Student('Ivan',18, 10)
+// console.log(student.study())
+
+// const teacher = new Teacher('Ritch' , 40, 'Programming')
+// console.log(teacher.teach())
+
+//3rd Exercise
+
+class Person {
+    name:string
+    id:number
+    salary:number
+
+    constructor(name:string,id:number,salary:number){
+        this.name = name
+        this.id = id
+        this.salary = salary
+    }
+
+    getPersonInfo():string{
+        return `name is ${this.name} and ID is ${this.id} and salary is ${this.salary}`
+    }
+}
+
+class Employee extends Person {
+    department:string
+    constructor(name:string,id:number,salary:number,department:string){
+        super(name,id,salary)
+        this.department = department
+    }
+
+    setDepartment(department:string){
+        this.department = department
+    }
+
+    getDepartment(){
+        return this.department
+    }
+
+    getEmployeeInfo():string{
+        return `${this.getPersonInfo()} and department is ${this.department}`
+    }
+}
+
+class Manager extends Employee {
+    team:Employee[]
+    constructor(
+        name:string, 
+        id:number,
+        salary:number,
+        department:string,
+        
+    ){
+        super(name,id,salary,department)
+        this.team = []
+    }
+
+   addToTeam(employee:Employee){
+        this.team.push(employee)
+   }
+
+   removeFromTeam(employee:Employee){
+        this.team.splice(this.team.indexOf(employee),1)
+   }
+   getTeam(){
+    return this.team
+   }
+   getManagerInfo():string{
+    const teamNames = this.team.map(emp => emp.name).join(',')
+    return `${this.getEmployeeInfo()} and managing team: ${teamNames}`
+   }
+}
+
+class Developer extends Employee {
+    skills:string[]
+    constructor(name:string,id:number,salary:number,department:string){
+        super(name,id,salary,department)
+        this.skills = []
+    }
+
+    addSkill(skill:string){
+        this.skills.push(skill)
+    }
+
+    removeSkill(skill:string){
+        this.skills.splice(this.skills.indexOf(skill),1)
+    }
+
+    getSkills(){
+        return this.skills.join(',')
+    }
+
+    getDeveloperInfo():string{
+        return `${this.getEmployeeInfo()} and skills:${this.skills.join(',')}`
+    }
+}
+
+class Department {
+    departmentName: string
+    employees: Employee[]
+
+    constructor(departmentName:string){
+        this.departmentName = departmentName
+        this.employees = []
+    }
+
+    addEmployee(employee:Employee) : Department{
+        this.employees.push(employee)
+        return this;
+    }
+
+    removeEmployee(employee:Employee) : Department{
+        this.employees.splice(this.employees.indexOf(employee),1)
+        return this;
+    }
+
+    getEmployeeCount():number{
+        return this.employees.length
+    }
+
+    getDepartmentInfo():string{
+        const employeeNames = this.employees.map(emp => emp.name).join(',')
+        return `Department: ${this.departmentName} , Employees: ${employeeNames}`
+    }
+}
+
+
+const dev1 = new Developer('Martin',12312,16000,'Devs')
+dev1.addSkill('Manyakol')
+dev1.addSkill('Manyakool')
+
+const manager = new Manager("Charlie", 3, 80000, "Engineering");
+manager.addToTeam(dev1);
+
+const department = new Department("WEBDEVS")
+department.addEmployee(manager);
+department.addEmployee(dev1);
+
+console.log(department.getDepartmentInfo())
+console.log(dev1.getDeveloperInfo());
+console.log(manager.getManagerInfo());
+console.log(department.getDepartmentInfo());
